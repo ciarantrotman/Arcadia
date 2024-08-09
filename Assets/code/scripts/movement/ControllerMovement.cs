@@ -7,11 +7,15 @@ namespace code.scripts.movement {
     public class ControllerMovement : MonoBehaviour {
         private PlayerControls controls;
 
-        public float multiplier = 1f; 
-        public float rotationModifier = 100f; 
+        [SerializeField, Range(0f, 1f)] private float multiplier = 1f;
+
+        private static readonly float[] IsometricAngles = { 60, 120, -120, -60, 0, 90, -90, 180 };
         
         private Vector2 translation;
         private Vector2 rotation;
+
+        private Vector2 snapped_translation;
+        private Vector2 snapped_rotation;
 
         private void Awake() {
             controls = new PlayerControls();
@@ -26,20 +30,55 @@ namespace code.scripts.movement {
         private void Update() {
             ApplyTranslation();
             ApplyRotation();
+            
+            VisualiseRawInput();
         }
 
         private void ApplyTranslation() {
-            Vector3 framerate_independent_translation = (new Vector3(translation.x, 0, translation.y) * Time.deltaTime);
+            snapped_translation = snap_to_isometric_angles(translation);
+            
+            Vector3 framerate_independent_translation = (new Vector3(snapped_translation.x, snapped_translation.y) * Time.deltaTime);
             transform.Translate(framerate_independent_translation * multiplier, Space.Self);
         }
 
         private void ApplyRotation() {
-            Vector3 framerate_independent_rotation = (new Vector3(-rotation.y, rotation.x, 0) * Time.deltaTime);
-            transform.Rotate(framerate_independent_rotation * rotationModifier, Space.Self);
-            Vector3 current_rotation = transform.eulerAngles;
-            transform.eulerAngles = new Vector3(current_rotation.x, current_rotation.y, 0);
+            snapped_rotation = snap_to_isometric_angles(rotation);
+        }
+        
+        private static Vector2 snap_to_isometric_angles(Vector2 vector) {
+            if (vector == Vector2.zero) return Vector2.zero;
+
+            // Calculate the angle of the input vector
+            float angle = Vector2.SignedAngle(Vector2.up, vector);
+
+            // Find the closest isometric angle
+            float min_difference = float.MaxValue;
+            float snapped_angle = 0;
+
+            foreach (float iso_angle in IsometricAngles)
+            {
+                float difference = Mathf.Abs(angle - iso_angle);
+                if (difference < min_difference)
+                {
+                    min_difference = difference;
+                    snapped_angle = iso_angle;
+                }
+            }
+            
+            Vector2 snapped_vector = Quaternion.Euler(0, 0, snapped_angle) * Vector2.up;
+            return snapped_vector;
         }
 
+        private void VisualiseRawInput() {
+            Vector3 position = transform.position;
+            Debug.DrawRay(position, translation, Color.blue);
+            Debug.DrawRay(position, snapped_translation, Color.blue);
+            
+            
+            Debug.DrawRay(position, rotation, Color.red);
+            Debug.DrawRay(position, snapped_rotation, Color.red);
+        }
+        
         private void OnEnable() {
             controls.simple_player_movement.Enable();
         }
