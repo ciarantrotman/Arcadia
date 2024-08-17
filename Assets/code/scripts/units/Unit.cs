@@ -21,9 +21,9 @@ namespace code.scripts.units {
             pathfinder = GetComponent<IAstarAI>();
         }
 
-        private void Start() {
-            RegisterUnit();
-        }
+        private void Start() => UnitManager.RegisterUnit(this);
+        private void OnEnable() => UnitManager.RegisterUnit(this);
+        private void OnDisable() => UnitManager.DeregisterUnit(this);
 
         private void Update() {
             if (moveToCursor) {
@@ -31,17 +31,6 @@ namespace code.scripts.units {
             }
         }
 
-        private void OnDisable() {
-            DeregisterUnit();
-        }
-
-        private void RegisterUnit() {
-            UnitManager.RegisterUnit(this);
-        }
-        
-        private void DeregisterUnit() {
-            UnitManager.DeregisterUnit(this);
-        }
         
         public void Select() {
             UnitManager.SelectUnit(this);

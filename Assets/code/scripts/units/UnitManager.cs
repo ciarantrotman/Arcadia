@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace code.scripts.units {
     public class UnitManager : MonoBehaviour {
@@ -44,6 +42,7 @@ namespace code.scripts.units {
         /// </summary>
         /// <param name="unit_to_register"></param>
         public static void RegisterUnit(Unit unit_to_register) {
+            if (instance == null) return;
             if (instance.allUnits.Contains(unit_to_register)) {
                 Debug.LogError($"{unit_to_register.data.unitName} is already registered");
             } else {
@@ -56,11 +55,12 @@ namespace code.scripts.units {
         /// </summary>
         /// <param name="unit_to_deregister"></param>
         public static void DeregisterUnit(Unit unit_to_deregister) {
+            if (instance == null) return;
             if (instance.allUnits.Contains(unit_to_deregister)) {
                 instance.allUnits.Remove(unit_to_deregister); 
-                Debug.Log($"{unit_to_deregister.data.unitName} was deregistered");
+                Debug.Log($"{unit_to_deregister.data.unitName} was deregistered from UnitManager");
             } else {
-                Debug.LogError($"Cannot deregister {unit_to_deregister.data.unitName} as it is not registered UnitManager");
+                Debug.LogError($"Cannot deregister {unit_to_deregister.data.unitName} as it is not registered with UnitManager");
             }
         }
     }

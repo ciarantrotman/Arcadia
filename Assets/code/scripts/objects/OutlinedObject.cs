@@ -1,3 +1,4 @@
+using System;
 using code.scripts.input;
 using code.scripts.interfaces;
 using UnityEngine;
@@ -11,7 +12,11 @@ namespace code.scripts.objects {
         private bool outline_state_override;
 
         private void Awake() => target = GetComponent<SpriteRenderer>();
-        private void Start() => OutlineManager.instance.RegisterOutline(this);
+
+        private void Start() => OutlineManager.RegisterOutline(this);
+        
+        private void OnEnable() => OutlineManager.RegisterOutline(this);
+        private void OnDisable() => OutlineManager.DeregisterOutline(this);
 
         SpriteRenderer Interfaces.IOutline.target {
             get => target;
@@ -37,9 +42,8 @@ namespace code.scripts.objects {
                 }
             };
             subject = outline_object.AddComponent<SpriteRenderer>();
-            subject.size *= 2;
-            subject.sortingOrder = target.sortingOrder - 1;
             subject.material = OutlineManager.instance.material;
+            subject.sortingOrder = target.sortingOrder - 1;
             subject.color = outline.color;
             subject.enabled = false;
         }

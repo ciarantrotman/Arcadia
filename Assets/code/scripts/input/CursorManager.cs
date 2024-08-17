@@ -8,5 +8,10 @@ namespace code.scripts.input {
 
         public static Vector2 screen_position() => Input.mousePosition;
         public static Vector2 world_position() => CameraManager.main_camera().ScreenToWorldPoint(screen_position());
+        
+        public static RaycastHit2D cursor_raycast(out RaycastHit2D hit) {
+            hit = Physics2D.Raycast(world_position(), Vector2.zero, 0f);
+            return hit;
+        }
     }
 }

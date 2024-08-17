@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a6562e873541444d89f7b9d950b423ef
+guid: 9f18099ebbdb64989bfd3b809c38322e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -78,7 +78,7 @@ ScriptedImporter:
     defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 2
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -91,13 +91,13 @@ ScriptedImporter:
     defaultPivotAlignment: 0
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 2
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638595345102596930
+  platformSettingsDirtyTick: 638595347822001880
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: debugging-unit
+  - name: water-tile
     originalName: 
-    pivot: {x: 0.5555556, y: 0.4117647}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 9
-      height: 17
-    spriteID: 62787bd6ac9d8423db916a05f681a9bf
+      width: 32
+      height: 32
+    spriteID: 08428290a70e14e97a5cb8a0450a4746
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,21 +144,21 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 683406505
-    name: debugging-unit
+    guid: -2143980644
+    name: water-tile
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: debugging-unit
+    - name: water-tile
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 12
-        y: 10
-        width: 7
-        height: 15
-      spriteId: 62787bd6ac9d8423db916a05f681a9bf
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      spriteId: 08428290a70e14e97a5cb8a0450a4746
     linkedCells: []
     parentIndex: -1
   platformSettings:
