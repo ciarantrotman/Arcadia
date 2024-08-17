@@ -8,7 +8,7 @@ using UnityEngine;
 namespace code.scripts.units {
     [RequireComponent(typeof(Seeker)), RequireComponent(typeof(IAstarAI))]
     public abstract class Unit : MonoBehaviour, Interfaces.ISelectable {
-        [InlineEditor(InlineEditorModes.FullEditor), SerializeField] protected UnitData data;
+        [InlineEditor(InlineEditorModes.FullEditor), SerializeField] protected internal UnitData data;
         
         private Seeker seeker;
         private IAstarAI pathfinder;
@@ -17,14 +17,15 @@ namespace code.scripts.units {
             seeker = GetComponent<Seeker>();
             pathfinder = GetComponent<IAstarAI>();
         }
+        
+        private void Start() {
+            RegisterUnit();
+        }
 
         private void Update() {
             pathfinder.destination = CursorManager.world_position();
         }
-
-        private void OnEnable() {
-            RegisterUnit();
-        }
+        
 
         private void OnDisable() {
             DeregisterUnit();
