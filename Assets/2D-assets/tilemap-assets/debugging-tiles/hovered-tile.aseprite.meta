@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2cb2166e6400040adb4ab534389a41bb
+guid: 6067a737b83ae4d33bf42d17f76f5f5b
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: pointed-top-hexagon
+  - name: hovered-tile
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,9 +130,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 16
-    spriteID: 7b0e643c03ec94452986007097058890
+      width: 32
+      height: 32
+    spriteID: 1748b0ad700a642068172b6b13ac688e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,25 +144,25 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -133932542
-    name: pointed-top-hexagon
+    guid: 792534684
+    name: hovered-tile
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: pointed-top-hexagon
+    - name: hovered-tile
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 16
-        height: 16
-      spriteId: 7b0e643c03ec94452986007097058890
+        width: 32
+        height: 32
+      spriteId: 1748b0ad700a642068172b6b13ac688e
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 16, y: 16}
+  canvasSize: {x: 32, y: 32}
