@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using code.scripts.input;
 using UnityEngine;
 
 namespace code.scripts.units {
@@ -11,7 +13,11 @@ namespace code.scripts.units {
         private void Awake() {
             instance = this;
         }
-        
+
+        private void Start() {
+            
+        }
+
         /// <summary>
         /// 
         /// </summary>

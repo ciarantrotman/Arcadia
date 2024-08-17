@@ -2,11 +2,11 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "simple_player_movement",
+            "name": "action_map",
             "id": "d0ba44ad-bb56-45ba-9dd4-74129f771f45",
             "actions": [
                 {
-                    "name": "horizontal_movement",
+                    "name": "planar_movement",
                     "type": "PassThrough",
                     "id": "5b99cfc7-ed50-4843-9197-b0f4b4e8af81",
                     "expectedControlType": "Vector2",
@@ -15,27 +15,25 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "rotation",
-                    "type": "PassThrough",
-                    "id": "e530c8e6-ee67-4cd3-af17-5294612b5ed2",
-                    "expectedControlType": "Vector2",
+                    "name": "select",
+                    "type": "Button",
+                    "id": "1b0f9356-cb86-4b1f-b07c-00ceb446136e",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "inspect",
+                    "type": "Button",
+                    "id": "06931cb2-c29c-4fc9-bee0-59402f107902",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "66449eda-ac3b-492d-996c-b6145ad6e5ae",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "gamepad-scheme",
-                    "action": "horizontal_movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "2D Vector",
                     "id": "010732d0-bb89-4703-87d3-acec05cf1b66",
@@ -43,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "horizontal_movement",
+                    "action": "planar_movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -53,8 +51,8 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "horizontal_movement",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -64,8 +62,8 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "horizontal_movement",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -75,8 +73,8 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "horizontal_movement",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -86,98 +84,114 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "horizontal_movement",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "1b954ad4-5d6c-460c-8ce2-a5231baae745",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "gamepad-scheme",
-                    "action": "rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "2D Vector",
-                    "id": "6de97ad3-d257-49ca-8480-4efe395397e9",
+                    "id": "6cd23283-5dbd-482a-aa4f-1641ac1db1b4",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "rotation",
+                    "action": "planar_movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "2636ffb6-09f3-45d2-88f4-a19fd653e0e7",
+                    "id": "e245a401-8cf0-4018-9614-ccb972cf9102",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "rotation",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "f6b13a48-cce9-4f28-a12a-053545f9ea37",
+                    "id": "0cd3f493-d877-4488-9898-6891a9833395",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "rotation",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "bca7a565-d778-4700-8fae-4df61d974b06",
+                    "id": "361b57a3-faef-4226-afb4-bb41899c294c",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "rotation",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "34166a0a-fb80-44e8-a6e4-26298722f7b3",
+                    "id": "cb8719d7-3752-49e7-9687-2ab4152e5d2f",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "keyboard-scheme",
-                    "action": "rotation",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "planar_movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "92cf5ff8-b39d-453f-b2e3-afb44d8c766d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44aba078-2aea-4371-a790-c8eb8d9fbd11",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "970af2f6-984d-4b24-80d2-ae38f278644b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "inspect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
     "controlSchemes": [
         {
-            "name": "gamepad-scheme",
-            "bindingGroup": "gamepad-scheme",
-            "devices": [
-                {
-                    "devicePath": "<Gamepad>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "keyboard-scheme",
-            "bindingGroup": "keyboard-scheme",
+            "name": "keyboard-and-mouse-scheme",
+            "bindingGroup": "keyboard-and-mouse-scheme",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }

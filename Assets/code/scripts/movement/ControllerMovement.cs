@@ -23,11 +23,11 @@ namespace code.scripts.movement {
         private void Awake() {
             // controls = new PlayerControls();
             
-            controls.simple_player_movement.horizontal_movement.performed += ctx => translation = ctx.ReadValue<Vector2>();
-            controls.simple_player_movement.horizontal_movement.canceled += ctx => translation = Vector2.zero;
-            
-            controls.simple_player_movement.rotation.performed += ctx => rotation = ctx.ReadValue<Vector2>();
-            controls.simple_player_movement.rotation.canceled += ctx => rotation = Vector2.zero;
+            // controls.simple_player_movement.horizontal_movement.performed += ctx => translation = ctx.ReadValue<Vector2>();
+            // controls.simple_player_movement.horizontal_movement.canceled += ctx => translation = Vector2.zero;
+            // 
+            // controls.simple_player_movement.rotation.performed += ctx => rotation = ctx.ReadValue<Vector2>();
+            // controls.simple_player_movement.rotation.canceled += ctx => rotation = Vector2.zero;
         }
 
         private void Update() {
@@ -88,11 +88,11 @@ namespace code.scripts.movement {
         }
         
         private void OnEnable() {
-            controls.simple_player_movement.Enable();
+            //controls.simple_player_movement.Enable();
         }
         
         private void OnDisable() {
-            controls.simple_player_movement.Disable();
+           //controls.simple_player_movement.Disable();
         }
     }
 }
