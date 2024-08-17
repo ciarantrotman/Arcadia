@@ -19,9 +19,9 @@ namespace code.scripts.movement {
 
         private Vector2 snapped_translation;
         private Vector2 snapped_rotation;
-
+        
         private void Awake() {
-            controls = new PlayerControls();
+            // controls = new PlayerControls();
             
             controls.simple_player_movement.horizontal_movement.performed += ctx => translation = ctx.ReadValue<Vector2>();
             controls.simple_player_movement.horizontal_movement.canceled += ctx => translation = Vector2.zero;
