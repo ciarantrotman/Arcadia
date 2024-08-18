@@ -8,8 +8,8 @@ namespace code.behaviours {
 	{
 		public Unit unit;
 		public SharedVector3Int cell;
+		public override void OnStart() => unit.pathfinder.destination = GridManager.GetWorldPosition(cell.Value);
 		public override TaskStatus OnUpdate() {
-			unit.pathfinder.destination = GridManager.GetWorldPosition(cell.Value);
 			return unit.pathfinder.reachedDestination || unit.pathfinder.reachedEndOfPath 
 				? TaskStatus.Success 
 				: TaskStatus.Running;

@@ -19,11 +19,11 @@ namespace code.behaviours {
 				cell.Value = GridManager.hovered_cell;
 			}
 			Visualise.HexagonsInRange(unit.OffsetCoordinates, unit.data.vision.range, 
-				cursor_in_vision_cone 
-					? Color.green 
+				cursor_in_vision_cone
+					? Color.green
 					: Color.red);
-			return cursor_in_vision_cone 
-				? TaskStatus.Success 
+			return cursor_in_vision_cone
+				? TaskStatus.Success
 				: TaskStatus.Failure;
 		}
 	}
