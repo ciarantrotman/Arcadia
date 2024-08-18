@@ -3724,9 +3724,9 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(684.0845,140.631287)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(0.334472656,123.631287)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"code.behaviours.CursorInVisionCone","NodeData":{"Offset":"(-73.04754,146.631287)"},"ID":2,"Name":"Cursor
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(684.0845,140.631287)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(0.334472656,123.631287)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"code.behaviours.CursorInVisionCone","NodeData":{"Offset":"(-83.04754,146.631287)"},"ID":2,"Name":"Cursor
         In Vision Cone","Instant":true,"Unitunit":0,"SharedVector3Intcell":{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"cell","IsShared":true,"Vector3IntmValue":"(0,
-        0, 0)"}},{"Type":"code.behaviours.MoveToCursor","NodeData":{"Offset":"(69.08447,146.631287)"},"ID":3,"Name":"Move
+        0, 0)"}},{"Type":"code.behaviours.MoveToCursor","NodeData":{"Offset":"(79.08447,146.631287)"},"ID":3,"Name":"Move
         To Cursor","Instant":true,"Unitunit":1,"SharedVector3Intcell":{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"cell","IsShared":true,"Vector3IntmValue":"(0,
         0, 0)"}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"cell","IsShared":true,"Vector3IntmValue":"(0,
         0, 0)"}]}'
