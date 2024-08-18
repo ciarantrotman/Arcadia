@@ -11,8 +11,11 @@ namespace code.scripts.tilemap.managers {
         [SerializeField] private Grid grid;
         
         public static Grid hexagonal_grid => instance.grid;
-        public static Vector3Int hovered_cell => hexagonal_grid.WorldToCell(CursorManager.world_position());
-        
         private void Awake() => instance = this;
+        
+        public static Vector3Int hovered_cell => hexagonal_grid.WorldToCell(CursorManager.world_position());
+        public static Vector3 cell_size => instance.grid.cellSize;
+        public static Vector3Int GetCellCoordinate(Vector3 world_position) => hexagonal_grid.WorldToCell(world_position);
+        public static Vector3 GetWorldPosition(Vector3Int offset_coordinate) => hexagonal_grid.CellToWorld(offset_coordinate);
     }
 }

@@ -1,20 +1,20 @@
-using System;
 using code.scripts.input;
 using code.scripts.interfaces;
-using code.scripts.objects;
+using code.scripts.tilemap.managers;
+using code.scripts.tilemap.utilities;
 using Pathfinding;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using static code.scripts.tilemap.utilities.HexagonUtilities;
 
 namespace code.scripts.units {
     [RequireComponent(typeof(Seeker)), RequireComponent(typeof(IAstarAI))]
     public abstract class Unit : MonoBehaviour, Interfaces.ISelect {
-        [InlineEditor(InlineEditorModes.FullEditor), SerializeField] protected internal UnitData data;
-
+        [InlineEditor(InlineEditorModes.GUIAndPreview), SerializeField] protected internal UnitData data;
         [SerializeField] private bool moveToCursor;
         
-        private Seeker seeker;
-        private IAstarAI pathfinder;
+        protected Seeker seeker;
+        protected internal IAstarAI pathfinder;
 
         private void Awake() {
             seeker = GetComponent<Seeker>();
@@ -24,20 +24,10 @@ namespace code.scripts.units {
         private void Start() => UnitManager.RegisterUnit(this);
         private void OnEnable() => UnitManager.RegisterUnit(this);
         private void OnDisable() => UnitManager.DeregisterUnit(this);
-
-        private void Update() {
-            if (moveToCursor) {
-                pathfinder.destination = CursorManager.world_position();
-            }
-        }
-
+        public void Select() => UnitManager.SelectUnit(this);
+        public void Deselect() => UnitManager.DeselectUnit(this);
         
-        public void Select() {
-            UnitManager.SelectUnit(this);
-        }
-
-        public void Deselect() {
-            UnitManager.DeselectUnit(this);
-        }
+        public Vector3Int OffsetCoordinates => GridManager.GetCellCoordinate(transform.position);
+        public CubicCoordinates CubicCoordinates => OffsetCoordinates.offset_to_cubic();
     }
 }

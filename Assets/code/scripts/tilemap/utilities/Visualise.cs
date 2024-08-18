@@ -1,11 +1,12 @@
 using System.Collections.Generic;
-using code.scripts.tilemap.managers;
+using code.scripts.units;
 using static code.scripts.tilemap.utilities.HexagonUtilities;
 using UnityEngine;
+using static code.scripts.tilemap.managers.GridManager;
 
 namespace code.scripts.tilemap.utilities {
     public static class Visualise {
-        private static readonly Grid Grid = GridManager.hexagonal_grid;
+        private static readonly Grid Grid = hexagonal_grid;
         
         private static readonly float HalfCellWidth = Grid.cellSize.x * .5f;
         private static readonly float HalfCellHeight = Grid.cellSize.y * .5f;
@@ -63,5 +64,42 @@ namespace code.scripts.tilemap.utilities {
                 Hexagon(cubic_coordinates.cubic_to_offset(), color);
             }
         }
+        
+        /*
+        todo: implement this right, bad AI code
+        public static void DrawVisionCone(this Unit unit, bool use_cell_size = true)
+        {
+            float angle = unit.data.fieldOfViewAngle;
+            float radius = unit.data.fieldOfViewDistance;
+
+            if (use_cell_size)
+            {
+                radius *= cell_size.x;
+            }
+
+            Transform transform = unit.transform;
+            Vector3 center_point = transform.position;
+            Vector3 forward_vector = transform.forward;
+
+            Vector3 start_point = center_point + forward_vector * radius;
+            Vector3 end_point = Quaternion.AngleAxis(-angle, Vector3.up) * forward_vector * radius;
+
+            Arc(center_point, angle, radius, start_point, end_point);
+            Debug.DrawLine(center_point, start_point, Color.red);
+            Debug.DrawLine(center_point, end_point, Color.blue);
+        }
+
+        private static void Arc(Vector3 center, float angle, float radius, Vector3 start, Vector3 end)
+        {
+            const float angle_step = 1f;
+            for (float a = 0; a <= angle; a += angle_step)
+            {
+                float x = center.x + radius * Mathf.Cos(a * Mathf.Deg2Rad);
+                float y = center.y + radius * Mathf.Sin(a * Mathf.Deg2Rad);
+                Vector3 point = new Vector3(x, y, center.z);
+                Debug.DrawLine(start, point, Color.green);
+            }
+        }
+        */
     }
 }
