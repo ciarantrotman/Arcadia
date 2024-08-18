@@ -53,6 +53,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""move"",
+                    ""type"": ""Button"",
+                    ""id"": ""ded8dacb-0576-4b33-8993-b177e1a7175d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -198,6 +207,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""inspect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1874c31d-846c-4025-a9cd-78bdf00971cd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard-and-mouse-scheme"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e35e947c-b463-4935-ae8b-ad036237177e"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard-and-mouse-scheme"",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -226,6 +257,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_action_map_planar_movement = m_action_map.FindAction("planar_movement", throwIfNotFound: true);
         m_action_map_select = m_action_map.FindAction("select", throwIfNotFound: true);
         m_action_map_inspect = m_action_map.FindAction("inspect", throwIfNotFound: true);
+        m_action_map_move = m_action_map.FindAction("move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -290,6 +322,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_action_map_planar_movement;
     private readonly InputAction m_action_map_select;
     private readonly InputAction m_action_map_inspect;
+    private readonly InputAction m_action_map_move;
     public struct Action_mapActions
     {
         private @PlayerControls m_Wrapper;
@@ -297,6 +330,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @planar_movement => m_Wrapper.m_action_map_planar_movement;
         public InputAction @select => m_Wrapper.m_action_map_select;
         public InputAction @inspect => m_Wrapper.m_action_map_inspect;
+        public InputAction @move => m_Wrapper.m_action_map_move;
         public InputActionMap Get() { return m_Wrapper.m_action_map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +349,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @inspect.started += instance.OnInspect;
             @inspect.performed += instance.OnInspect;
             @inspect.canceled += instance.OnInspect;
+            @move.started += instance.OnMove;
+            @move.performed += instance.OnMove;
+            @move.canceled += instance.OnMove;
         }
 
         private void UnregisterCallbacks(IAction_mapActions instance)
@@ -328,6 +365,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @inspect.started -= instance.OnInspect;
             @inspect.performed -= instance.OnInspect;
             @inspect.canceled -= instance.OnInspect;
+            @move.started -= instance.OnMove;
+            @move.performed -= instance.OnMove;
+            @move.canceled -= instance.OnMove;
         }
 
         public void RemoveCallbacks(IAction_mapActions instance)
@@ -359,5 +399,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnPlanar_movement(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnInspect(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }

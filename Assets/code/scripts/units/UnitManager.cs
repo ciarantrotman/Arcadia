@@ -1,10 +1,11 @@
-using System;
 using System.Collections.Generic;
-using code.scripts.input;
+using code.scripts.tilemap.managers;
+using code.scripts.tilemap.utilities;
 using UnityEngine;
 
 namespace code.scripts.units {
     public class UnitManager : MonoBehaviour {
+        //private PlayerControls controls;
         public static UnitManager instance;
         
         public List<Unit> allUnits = new List<Unit>();
@@ -12,10 +13,19 @@ namespace code.scripts.units {
 
         private void Awake() {
             instance = this;
+            //controls = new PlayerControls();
+            //controls.action_map.move.performed += context => MoveSelectedUnitsToCursor();
         }
 
-        private void Start() {
-            
+        /// <summary>
+        /// 
+        /// </summary>
+        internal static void MoveSelectedUnitsToCursor() {
+            Debug.Log("Movement Order Received");
+            foreach (Unit unit_to_move in instance.selectedUnits) {
+                unit_to_move.OrderMovement(GridManager.hovered_cell);
+                Debug.Log($"{unit_to_move.data.information.name} was ordered to move to {GridManager.hovered_cell.offset_to_cubic().ReadableLabel()}");
+            }
         }
 
         /// <summary>
@@ -24,7 +34,7 @@ namespace code.scripts.units {
         /// <param name="unit_to_select"></param>
         public static void SelectUnit(Unit unit_to_select) {
             if (instance.selectedUnits.Contains(unit_to_select)) {
-                Debug.LogError($"{unit_to_select.data.information.name} is already selected");
+                Debug.LogWarning($"{unit_to_select.data.information.name} is already selected");
             } else {
                 instance.selectedUnits.Add(unit_to_select); 
                 Debug.Log($"{unit_to_select.data.information.name} was selected");
@@ -69,5 +79,8 @@ namespace code.scripts.units {
                 Debug.LogError($"Cannot deregister {unit_to_deregister.data.information.name} as it is not registered with UnitManager");
             }
         }
+        
+        //private void OnEnable() => controls.action_map.Enable();
+        //private void OnDisable() => controls.action_map.Disable();
     }
 }

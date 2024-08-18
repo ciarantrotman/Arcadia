@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace code.scripts.interfaces {
     public interface Interfaces {
@@ -14,6 +15,9 @@ namespace code.scripts.interfaces {
             /// 
             /// </summary>
             void Deselect();
+        }
+        interface IMove {
+            void OrderMovement(Vector3Int cubic_coordinates);
         }
         /// <summary>
         /// 

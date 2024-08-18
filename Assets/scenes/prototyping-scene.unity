@@ -1658,12 +1658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bf3130453344e5caaa3019ca57b285c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selection:
-    m_PersistentCalls:
-      m_Calls: []
-  null_selection:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &625537883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,7 +3523,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c17f9d8ad4aa64c0ca170bbb8c65429b, type: 2}
-  moveToCursor: 0
 --- !u!114 &645060661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3724,19 +3717,21 @@ MonoBehaviour:
       parentIndex: 
       startIndex: 
       variableStartIndex: 
-      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(684.0845,140.631287)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(0.334472656,123.631287)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"code.behaviours.CursorInVisionCone","NodeData":{"Offset":"(-83.04754,146.631287)"},"ID":2,"Name":"Cursor
-        In Vision Cone","Instant":true,"Unitunit":0,"SharedVector3Intcell":{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"cell","IsShared":true,"Vector3IntmValue":"(0,
-        0, 0)"}},{"Type":"code.behaviours.MoveToCursor","NodeData":{"Offset":"(79.08447,146.631287)"},"ID":3,"Name":"Move
-        To Cursor","Instant":true,"Unitunit":1,"SharedVector3Intcell":{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"cell","IsShared":true,"Vector3IntmValue":"(0,
-        0, 0)"}}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"cell","IsShared":true,"Vector3IntmValue":"(0,
-        0, 0)"}]}'
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(674.0845,390.6313)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(-3.83971024,115.76001)"},"ID":1,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-154.671875,153.168274)"},"ID":2,"Name":"movement","Instant":true,"AbortTypeabortType":"LowerPriority","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.HasReceivedEvent","NodeData":{"Offset":"(-80,140)"},"ID":3,"Name":"movement-ordered","Instant":true,"SharedStringeventName":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"OrderMovement"},"SharedVariablestoredValue1":{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"coordinates","IsShared":true,"Tooltip":"the
+        cubic coordinates a unit is ordered to move to","Vector3IntmValue":"(0, 0,
+        0)"}},{"Type":"code.behaviours.MoveToCubicCoordinates","NodeData":{"Offset":"(93.58447,138.631287)"},"ID":4,"Name":"Move
+        To Cubic Coordinates","Instant":true,"Unitunit":0,"SharedVector3Intcoordinates":{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"coordinates","IsShared":true,"Tooltip":"the
+        cubic coordinates a unit is ordered to move to","Vector3IntmValue":"(0, 0,
+        0)"}}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(174.248169,150.650024)"},"ID":5,"Name":"idle","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Wait","NodeData":{"Offset":"(-50,140)"},"ID":6,"Name":"Wait","Instant":true,"SharedFloatwaitTime":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":5},"SharedBoolrandomWait":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedFloatrandomWaitMin":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1},"SharedFloatrandomWaitMax":{"Type":"BehaviorDesigner.Runtime.SharedFloat","Name":null,"SinglemValue":1}},{"Type":"BehaviorDesigner.Runtime.Tasks.Log","NodeData":{"Offset":"(60.04271,138.2675)"},"ID":7,"Name":"Log","Instant":true,"SharedStringtext":{"Type":"BehaviorDesigner.Runtime.SharedString","Name":null,"StringmValue":"unit
+        is idle"},"SharedBoollogError":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false},"SharedBoollogTime":{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":null,"BooleanmValue":false}}]}]},"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedVector3Int","Name":"coordinates","IsShared":true,"Tooltip":"the
+        cubic coordinates a unit is ordered to move to","Vector3IntmValue":"(0, 0,
+        0)"}]}'
       fieldSerializationData:
         typeName: []
         fieldNameHash: 
         startIndex: 
         dataPosition: 
         unityObjects:
-        - {fileID: 645060660}
         - {fileID: 645060660}
         byteData: 
         byteDataArray: 
