@@ -15,4 +15,4 @@ MonoBehaviour:
   information:
     name: debugging-unit
   vision:
-    range: 2
+    range: 5
