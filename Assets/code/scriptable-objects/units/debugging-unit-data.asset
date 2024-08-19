@@ -16,3 +16,4 @@ MonoBehaviour:
     name: debugging-unit
   vision:
     range: 5
+  outline: {fileID: 11400000, guid: b8ea8c2721f4b4689998f4ab1b8fe0c2, type: 2}

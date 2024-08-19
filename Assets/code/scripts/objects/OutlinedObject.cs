@@ -12,9 +12,8 @@ namespace code.scripts.objects {
         private bool outline_state_override;
 
         private void Awake() => target = GetComponent<SpriteRenderer>();
-
-        private void Start() => OutlineManager.RegisterOutline(this);
         
+        private void Start() => OutlineManager.RegisterOutline(this);
         private void OnEnable() => OutlineManager.RegisterOutline(this);
         private void OnDisable() => OutlineManager.DeregisterOutline(this);
 

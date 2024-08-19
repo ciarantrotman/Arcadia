@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06be337b86745f1adbf14a0f971dc77, type: 3}
   m_Name: unit-outline
   m_EditorClassIdentifier: 
-  color: {r: 0.10215378, g: 1, b: 0, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 1}

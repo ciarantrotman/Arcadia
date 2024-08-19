@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using code.scripts.input;
 using code.scripts.tilemap.managers;
 using code.scripts.tilemap.utilities;
 using UnityEngine;
@@ -13,18 +15,20 @@ namespace code.scripts.units {
 
         private void Awake() {
             instance = this;
-            //controls = new PlayerControls();
-            //controls.action_map.move.performed += context => MoveSelectedUnitsToCursor();
+        }
+
+        private void Start() {
+            InputManager.instance.controls.action_map.move.performed += context => MoveSelectedUnitsToCursor();
+            InputManager.instance.controls.action_map.cancel.performed += context => DeselectAllSelectedUnits();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        internal static void MoveSelectedUnitsToCursor() {
-            Debug.Log("Movement Order Received");
+        private static void MoveSelectedUnitsToCursor() {
             foreach (Unit unit_to_move in instance.selectedUnits) {
                 unit_to_move.OrderMovement(GridManager.hovered_cell);
-                Debug.Log($"{unit_to_move.data.information.name} was ordered to move to {GridManager.hovered_cell.offset_to_cubic().ReadableLabel()}");
+                // Debug.Log($"{unit_to_move.data.information.name} was ordered to move to {GridManager.hovered_cell.offset_to_cubic().ReadableLabel()}");
             }
         }
 
@@ -43,9 +47,19 @@ namespace code.scripts.units {
         /// <summary>
         /// 
         /// </summary>
+        private static void DeselectAllSelectedUnits() {
+            List<Unit> cached_selected_units = new List<Unit>(instance.selectedUnits);
+            foreach (Unit unit_to_deselect in cached_selected_units) {
+                unit_to_deselect.Deselect();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="unit_to_deselect"></param>
         public static void DeselectUnit(Unit unit_to_deselect) {
             if (instance.selectedUnits.Contains(unit_to_deselect)) {
+                Debug.Log($"Trying to deselect {unit_to_deselect.data.information.name}");
                 instance.selectedUnits.Remove(unit_to_deselect); 
                 Debug.Log($"{unit_to_deselect.data.information.name} was deselected");
             } else {
@@ -60,7 +74,7 @@ namespace code.scripts.units {
         public static void RegisterUnit(Unit unit_to_register) {
             if (instance == null) return;
             if (instance.allUnits.Contains(unit_to_register)) {
-                Debug.LogError($"{unit_to_register.data.information.name} is already registered");
+                Debug.LogError($"{unit_to_register.data.information.name} is already registered with UnitManager");
             } else {
                instance.allUnits.Add(unit_to_register); 
                Debug.Log($"{unit_to_register.data.information.name} was registered with UnitManager");

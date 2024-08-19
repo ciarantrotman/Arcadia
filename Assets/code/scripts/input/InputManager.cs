@@ -1,17 +1,15 @@
 using code.scripts.interfaces;
-using code.scripts.units;
 using UnityEngine;
 
 namespace code.scripts.input {
-    public class SelectionManager : MonoBehaviour {
-        public static SelectionManager instance;
-        private PlayerControls controls;
+    public class InputManager : MonoBehaviour {
+        public static InputManager instance;
+        protected internal PlayerControls controls;
         
         private void Awake() {
             instance = this;
             controls = new PlayerControls();
             controls.action_map.select.performed += context => Select();
-            controls.action_map.move.performed += context => UnitManager.MoveSelectedUnitsToCursor();
         }
         
         private void OnEnable() => controls.action_map.Enable();

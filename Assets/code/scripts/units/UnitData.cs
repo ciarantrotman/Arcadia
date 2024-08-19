@@ -1,4 +1,5 @@
 using System;
+using code.scripts.objects;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,10 +11,11 @@ namespace code.scripts.units {
             public string name;
         }
         [Serializable] public struct VisionProperties {
-            [FormerlySerializedAs("distance")] [Range(1, 16)] public int range;
+            [Range(1, 16)] public int range;
         }
         [Title("Unit Data", "Information and generic class behaviours for this unit type")]
         public Information information;
         public VisionProperties vision;
+        public Outline outline;
     }
 }

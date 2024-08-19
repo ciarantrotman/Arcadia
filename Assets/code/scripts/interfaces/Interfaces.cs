@@ -18,6 +18,7 @@ namespace code.scripts.interfaces {
         }
         interface IMove {
             void OrderMovement(Vector3Int cubic_coordinates);
+            void SetPathfinderDestination(Vector3Int cubic_coordinates);
         }
         /// <summary>
         /// 

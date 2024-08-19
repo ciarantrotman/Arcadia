@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "cancel",
+                    "type": "Button",
+                    "id": "c0065726-2288-47ef-90d9-1c9321da35b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -189,7 +198,7 @@
                 {
                     "name": "",
                     "id": "1874c31d-846c-4025-a9cd-78bdf00971cd",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "keyboard-and-mouse-scheme",
@@ -205,6 +214,17 @@
                     "processors": "",
                     "groups": "keyboard-and-mouse-scheme",
                     "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db1d901b-f36a-4a02-9352-32814afa361a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard-and-mouse-scheme",
+                    "action": "cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
