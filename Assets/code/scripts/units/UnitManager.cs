@@ -19,7 +19,6 @@ namespace code.scripts.units {
 
         private void Start() {
             InputManager.instance.controls.action_map.move.performed += context => MoveAllSelectedUnitsToCursor();
-            InputManager.instance.controls.action_map.cancel.performed += context => DeselectAllSelectedUnits();
         }
 
         /// <summary>
@@ -45,15 +44,6 @@ namespace code.scripts.units {
             } else {
                 instance.selectedUnits.Add(unit_to_select); 
                 // Debug.Log($"{unit_to_select.data.information.name} was selected");
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        private static void DeselectAllSelectedUnits() {
-            List<Unit> cached_selected_units = new List<Unit>(instance.selectedUnits);
-            foreach (Unit unit_to_deselect in cached_selected_units) {
-                unit_to_deselect.Deselect();
             }
         }
         /// <summary>

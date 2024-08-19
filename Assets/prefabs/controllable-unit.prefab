@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1073741824
-  drawGizmos: 1
+  drawGizmos: 0
   detailedGizmos: 0
   startEndModifier:
     addPoints: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   endReachedDistance: 0.32
-  whenCloseToDestination: 0
+  whenCloseToDestination: 1
   rvoDensityBehavior:
     enabled: 1
     densityThreshold: 0.5
@@ -186,13 +186,13 @@ MonoBehaviour:
     period: 0.5
     sensitivity: 10
     maximumPeriod: 1
-    visualizeSensitivity: 1
+    visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.16
   pickNextWaypointDist: 0.08
-  alwaysDrawGizmos: 1
+  alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   preventMovingBackwards: 0
   constrainInsideGraph: 1

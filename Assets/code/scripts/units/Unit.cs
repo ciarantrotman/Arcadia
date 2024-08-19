@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
-using code.scripts.objects;
+using code.scripts.outline;
 using code.scripts.tilemap.managers;
 using code.scripts.tilemap.utilities;
 using Pathfinding;
@@ -11,7 +11,7 @@ using static code.scripts.tilemap.utilities.HexagonUtilities;
 
 namespace code.scripts.units {
     [RequireComponent(typeof(Seeker)), RequireComponent(typeof(IAstarAI)), RequireComponent(typeof(OutlinedObject))]
-    public abstract class Unit : MonoBehaviour, ISelect, IMove {
+    public abstract class Unit : MonoBehaviour, ISelect, IMove, IInspect {
         [InlineEditor(InlineEditorModes.GUIAndPreview), SerializeField] protected internal UnitData data;
         
         protected internal IAstarAI pathfinder;
@@ -31,11 +31,15 @@ namespace code.scripts.units {
         private void Start() => UnitManager.RegisterUnit(this);
         private void OnEnable() => UnitManager.RegisterUnit(this);
         private void OnDisable() => UnitManager.DeregisterUnit(this);
+        public bool selected { get; set; }
+
         public void Select() {
+            selected = true;
             UnitManager.SelectUnit(this);
             unit_outline.SetOutlineOverrideState(true);
         }
         public void Deselect() {
+            selected = false;
             UnitManager.DeselectUnit(this);
             unit_outline.SetOutlineOverrideState(false);
         }
@@ -56,5 +60,6 @@ namespace code.scripts.units {
             pathfinder.destination = GridManager.get_world_position(offset_coordinates);
             pathfinder.SearchPath();
         }
+        public void Inspect() => Debug.Log($"<b>{name}</b>: {data.information.name} has been inspected");
     }
 }

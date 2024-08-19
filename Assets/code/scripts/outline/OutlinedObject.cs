@@ -1,9 +1,8 @@
-using System;
 using code.scripts.input;
 using code.scripts.interfaces;
 using UnityEngine;
 
-namespace code.scripts.objects {
+namespace code.scripts.outline {
     [RequireComponent(typeof(SpriteRenderer))]
     public class OutlinedObject : MonoBehaviour, Interfaces.IOutline {
         [SerializeField] private Outline outline;

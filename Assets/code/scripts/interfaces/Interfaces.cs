@@ -7,10 +7,12 @@ namespace code.scripts.interfaces {
         /// 
         /// </summary>
         interface ISelect {
+            public bool selected  { get; set; }
             /// <summary>
             /// 
             /// </summary>
             void Select();
+            
             /// <summary>
             /// 
             /// </summary>
@@ -19,6 +21,15 @@ namespace code.scripts.interfaces {
         interface IMove {
             void OrderMovement(Vector3Int cubic_coordinates);
             void SetPathfinderDestination(Vector3Int offset_coordinates);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        interface IInspect {
+            /// <summary>
+            /// 
+            /// </summary>
+            void Inspect();
         }
         /// <summary>
         /// 

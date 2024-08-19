@@ -1,5 +1,5 @@
 using System;
-using code.scripts.objects;
+using code.scripts.outline;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;

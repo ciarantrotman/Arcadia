@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da4fdb532881545c3b6f154dfa28abf5
+guid: 95437625c449f4f689eb1695f6cc7474
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -75,10 +75,10 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
+    defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 2
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -88,16 +88,16 @@ ScriptedImporter:
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
-    defaultPivotAlignment: 0
+    defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 2
+    spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638596747043750430
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: drone
+  - name: device
     originalName: 
-    pivot: {x: 0.47368422, y: 0.5}
+    pivot: {x: 0.45000002, y: -0.07692308}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 19
-      height: 14
-    spriteID: 0960280a519a04eb2b88f012dd636985
+      width: 20
+      height: 26
+    spriteID: 7b72f1574aec249dfb343d5f90bb0244
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -144,48 +144,24 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -728776408
-    name: drone
+    guid: 18641200
+    name: device
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: drone
+    - name: device
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 8
-        y: 10
-        width: 17
-        height: 12
-      spriteId: 0960280a519a04eb2b88f012dd636985
+        x: 7
+        y: 2
+        width: 20
+        height: 26
+      spriteId: 7b72f1574aec249dfb343d5f90bb0244
     linkedCells: []
     parentIndex: -1
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
