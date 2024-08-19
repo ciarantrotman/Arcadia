@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06be337b86745f1adbf14a0f971dc77, type: 3}
-  m_Name: unit-outline
+  m_Script: {fileID: 11500000, guid: 274eee79bcee4e0f8db007a84e58ff33, type: 3}
+  m_Name: npc-unit-data
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 1}
+  information:
+    name: npc-unit
+  vision:
+    range: 5
+  outline: {fileID: 11400000, guid: a8b2bc43e8bf740e085da0c640762431, type: 2}

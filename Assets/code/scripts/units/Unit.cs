@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
 using code.scripts.objects;
 using code.scripts.tilemap.managers;
@@ -17,8 +18,9 @@ namespace code.scripts.units {
         private OutlinedObject unit_outline;
         private BehaviorTree unit_behavior_tree;
         
-        public Vector3Int OffsetCoordinates => GridManager.GetCellCoordinate(transform.position);
-        public CubicCoordinates CubicCoordinates => OffsetCoordinates.offset_to_cubic();
+        public Vector3Int unit_offset_coordinates => GridManager.get_cell_coordinates(transform.position);
+        public CubicCoordinates unit_cubic_coordinates => unit_offset_coordinates.offset_to_cubic();
+        public List<CubicCoordinates> traversable_cells_in_range => GridManager.valid_coordinates_in_range(unit_cubic_coordinates, data.vision.range); // todo take into account blocked cells
 
         private void Awake() {
             pathfinder = GetComponent<IAstarAI>();
@@ -38,20 +40,20 @@ namespace code.scripts.units {
             unit_outline.SetOutlineOverrideState(false);
         }
         /// <summary>
-        /// 
+        /// Triggers the unit to move to the defined coordinates
         /// </summary>
-        /// <param name="cubic_coordinates"></param>
-        public void OrderMovement(Vector3Int cubic_coordinates) {
-            unit_behavior_tree.SendEvent<object>("OrderMovement", cubic_coordinates);
-            SetPathfinderDestination(cubic_coordinates);
+        /// <param name="offset_coordinates"></param>
+        public void OrderMovement(Vector3Int offset_coordinates) {
+            unit_behavior_tree.SendEvent<object>("OrderMovement", offset_coordinates);
+            SetPathfinderDestination(offset_coordinates);
         }
         /// <summary>
         /// This is called any time the move command is set, it will update the destination even if the MoveToCubicCoordinates
         /// behavior node is running
         /// </summary>
-        /// <param name="cubic_coordinates"></param>
-        public void SetPathfinderDestination(Vector3Int cubic_coordinates) {
-            pathfinder.destination = GridManager.GetWorldPosition(cubic_coordinates);
+        /// <param name="offset_coordinates"></param>
+        public void SetPathfinderDestination(Vector3Int offset_coordinates) {
+            pathfinder.destination = GridManager.get_world_position(offset_coordinates);
             pathfinder.SearchPath();
         }
     }

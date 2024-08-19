@@ -25,11 +25,11 @@ namespace code.scripts.input {
         public static void RegisterOutline(IOutline outline_to_register) {
             if (instance == null) return;
             if (instance.all_outlines.Contains(outline_to_register)) {
-                Debug.LogWarning($"{outline_to_register.target.name} is already registered with OutlineManager");
+                // Debug.LogWarning($"{outline_to_register.target.name} is already registered with OutlineManager");
             } else {
                 instance.all_outlines.Add(outline_to_register);
                 outline_to_register.InitialiseOutline(); 
-                Debug.Log($"{outline_to_register.target.name} was registered with OutlineManager");
+                // Debug.Log($"{outline_to_register.target.name} was registered with OutlineManager");
             }
         }
         /// <summary>
@@ -40,10 +40,10 @@ namespace code.scripts.input {
             if (instance == null) return;
             if (instance.all_outlines.Contains(outline_to_deregister)) {
                 instance.all_outlines.Remove(outline_to_deregister);
-                Debug.Log($"{outline_to_deregister.target.name} was deregistered with OutlineManager");
+                // Debug.Log($"{outline_to_deregister.target.name} was deregistered with OutlineManager");
             } else {
                 instance.all_outlines.Add(outline_to_deregister);
-                Debug.LogError($"Cannot deregister {outline_to_deregister.target.name} as it is not registered with OutlineManager");
+                // Debug.LogError($"Cannot deregister {outline_to_deregister.target.name} as it is not registered with OutlineManager");
             }
         }
 
