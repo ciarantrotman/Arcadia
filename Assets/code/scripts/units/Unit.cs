@@ -13,14 +13,13 @@ namespace code.scripts.units {
     [RequireComponent(typeof(Seeker)), RequireComponent(typeof(IAstarAI)), RequireComponent(typeof(OutlinedObject))]
     public abstract class Unit : MonoBehaviour, ISelect, IMove, IInspect {
         [InlineEditor(InlineEditorModes.GUIAndPreview), SerializeField] protected internal UnitData data;
+        [SerializeField] private bool exclusiveSelection;
         
         protected internal IAstarAI pathfinder;
         private OutlinedObject unit_outline;
         private BehaviorTree unit_behavior_tree;
         
-        public Vector3Int unit_offset_coordinates => GridManager.get_cell_coordinates(transform.position);
-        public CubicCoordinates unit_cubic_coordinates => unit_offset_coordinates.offset_to_cubic();
-        public List<CubicCoordinates> traversable_cells_in_range => GridManager.valid_coordinates_in_range(unit_cubic_coordinates, data.vision.range); // todo take into account blocked cells
+        public List<CubicCoordinates> traversable_cells_in_range => GridManager.valid_coordinates_in_range(transform.cubic_coordinates(), data.vision.range); // todo take into account blocked cells
 
         private void Awake() {
             pathfinder = GetComponent<IAstarAI>();
@@ -31,6 +30,12 @@ namespace code.scripts.units {
         private void Start() => UnitManager.RegisterUnit(this);
         private void OnEnable() => UnitManager.RegisterUnit(this);
         private void OnDisable() => UnitManager.DeregisterUnit(this);
+
+        public bool exclusive_selection {
+            get => exclusiveSelection;
+            set => exclusiveSelection = value;
+        }
+
         public bool selected { get; set; }
 
         public void Select() {
@@ -50,6 +55,7 @@ namespace code.scripts.units {
         public void OrderMovement(Vector3Int offset_coordinates) {
             unit_behavior_tree.SendEvent<object>("OrderMovement", offset_coordinates);
             SetPathfinderDestination(offset_coordinates);
+            Debug.Log($"<b>{name}</b>: {data.information.name} has been ordered to move to {offset_coordinates.readable_label()}");
         }
         /// <summary>
         /// This is called any time the move command is set, it will update the destination even if the MoveToCubicCoordinates

@@ -1,10 +1,10 @@
 namespace code.scripts.objects.implemented_objects {
     public class Drone : Object {
-        protected override void OnSelected() {
+        protected override void OnTriggerInteraction() {
             
         }
 
-        protected override void OnDeselected() {
+        protected override void OnFinishInteraction() {
             
         }
     }

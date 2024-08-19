@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""04ccdfcf-2619-490a-896e-fbf078e73589"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -197,41 +206,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""44aba078-2aea-4371-a790-c8eb8d9fbd11"",
-                    ""path"": ""<Keyboard>/enter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard-and-mouse-scheme"",
-                    ""action"": ""select"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""970af2f6-984d-4b24-80d2-ae38f278644b"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard-and-mouse-scheme"",
-                    ""action"": ""inspect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1874c31d-846c-4025-a9cd-78bdf00971cd"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""keyboard-and-mouse-scheme"",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e35e947c-b463-4935-ae8b-ad036237177e"",
-                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""keyboard-and-mouse-scheme"",
@@ -247,6 +223,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""keyboard-and-mouse-scheme"",
                     ""action"": ""cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b6030a85-8139-460a-80ee-1db99a97a566"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard-and-mouse-scheme"",
+                    ""action"": ""interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""deeada42-128b-4f7c-b48e-5d13d6dd023b"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard-and-mouse-scheme"",
+                    ""action"": ""inspect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -279,6 +277,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_action_map_inspect = m_action_map.FindAction("inspect", throwIfNotFound: true);
         m_action_map_move = m_action_map.FindAction("move", throwIfNotFound: true);
         m_action_map_cancel = m_action_map.FindAction("cancel", throwIfNotFound: true);
+        m_action_map_interact = m_action_map.FindAction("interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -345,6 +344,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_action_map_inspect;
     private readonly InputAction m_action_map_move;
     private readonly InputAction m_action_map_cancel;
+    private readonly InputAction m_action_map_interact;
     public struct Action_mapActions
     {
         private @PlayerControls m_Wrapper;
@@ -354,6 +354,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @inspect => m_Wrapper.m_action_map_inspect;
         public InputAction @move => m_Wrapper.m_action_map_move;
         public InputAction @cancel => m_Wrapper.m_action_map_cancel;
+        public InputAction @interact => m_Wrapper.m_action_map_interact;
         public InputActionMap Get() { return m_Wrapper.m_action_map; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -378,6 +379,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @cancel.started += instance.OnCancel;
             @cancel.performed += instance.OnCancel;
             @cancel.canceled += instance.OnCancel;
+            @interact.started += instance.OnInteract;
+            @interact.performed += instance.OnInteract;
+            @interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IAction_mapActions instance)
@@ -397,6 +401,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @cancel.started -= instance.OnCancel;
             @cancel.performed -= instance.OnCancel;
             @cancel.canceled -= instance.OnCancel;
+            @interact.started -= instance.OnInteract;
+            @interact.performed -= instance.OnInteract;
+            @interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IAction_mapActions instance)
@@ -430,5 +437,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInspect(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

@@ -11,6 +11,7 @@ namespace code.scripts.input {
             instance = this;
             controls = new PlayerControls();
             controls.action_map.select.performed += context => Select();
+            controls.action_map.interact.performed += context => Interact();
             controls.action_map.inspect.performed += context => Inspect();
             controls.action_map.cancel.performed += context => DeselectAllSelectedEntities();
         }
@@ -18,15 +19,29 @@ namespace code.scripts.input {
         private void OnEnable() => controls.action_map.Enable();
         private void OnDisable() => controls.action_map.Disable();
         /// <summary>
-        /// 
+        /// Selects whatever object the cursor is currently hovering over
         /// </summary>
         private static void Select() {
-            if (!CursorManager.cursor_raycast(out RaycastHit2D hit)) return;
+            // if we select nothing, take that as wanting to clear our selected items
+            if (!CursorManager.cursor_raycast(out RaycastHit2D hit)) {
+                DeselectAllSelectedEntities();
+                return;
+            }
             ISelect entity = hit.collider.GetComponent<ISelect>();
-            entity?.Select();
+            if (entity == null) return;
+            // allow us to deselect when selecting an already selected object
+            if (entity.selected) {
+                entity.Deselect();
+                return;
+            }
+            // if the object has exclusive selection, deselect everything else first
+            if (entity.exclusive_selection) {
+                DeselectAllSelectedEntities();
+            }
+            entity.Select();
         }
         /// <summary>
-        /// 
+        /// Finds all selected objects in the scene and deselects them
         /// </summary>
         private static void DeselectAllSelectedEntities() {
             ISelect[] selectables = FindObjectsOfType<MonoBehaviour>().OfType<ISelect>().ToArray();
@@ -41,6 +56,14 @@ namespace code.scripts.input {
             if (!CursorManager.cursor_raycast(out RaycastHit2D hit)) return;
             IInspect entity = hit.collider.GetComponent<IInspect>();
             entity?.Inspect();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private static void Interact() {
+            if (!CursorManager.cursor_raycast(out RaycastHit2D hit)) return;
+            IInteract entity = hit.collider.GetComponent<IInteract>();
+            entity?.TriggerInteraction();
         }
     }
 }

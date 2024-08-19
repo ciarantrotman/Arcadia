@@ -13,12 +13,12 @@ namespace code.behaviours {
 		public Unit unit;
 		public SharedVector3Int cell;
 		public override TaskStatus OnUpdate() {
-			IEnumerable<CubicCoordinates> cells_in_vision_cone = coordinates_within_range(unit.unit_cubic_coordinates, unit.data.vision.range);
+			IEnumerable<CubicCoordinates> cells_in_vision_cone = coordinates_within_range(unit.transform.cubic_coordinates(), unit.data.vision.range);
 			bool cursor_in_vision_cone = cells_in_vision_cone.Contains(GridManager.hovered_cell.offset_to_cubic());
 			if (cursor_in_vision_cone) {
 				cell.Value = GridManager.hovered_cell;
 			}
-			Visualise.HexagonsInRange(unit.unit_offset_coordinates, unit.data.vision.range, 
+			Visualise.HexagonsInRange(unit.transform.offset_coordinates(), unit.data.vision.range, 
 				cursor_in_vision_cone
 					? Color.green
 					: Color.red);

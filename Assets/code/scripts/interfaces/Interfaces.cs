@@ -3,37 +3,40 @@ using UnityEngine.Events;
 
 namespace code.scripts.interfaces {
     public interface Interfaces {
-        /// <summary>
-        /// 
-        /// </summary>
         interface ISelect {
+            public bool exclusive_selection  { get; set; }
             public bool selected  { get; set; }
             /// <summary>
             /// 
             /// </summary>
             void Select();
-            
             /// <summary>
             /// 
             /// </summary>
             void Deselect();
         }
+        interface IInteract {
+            void TriggerInteraction();
+            void FinishInteraction();
+        }
         interface IMove {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="cubic_coordinates"></param>
             void OrderMovement(Vector3Int cubic_coordinates);
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="offset_coordinates"></param>
             void SetPathfinderDestination(Vector3Int offset_coordinates);
         }
-        /// <summary>
-        /// 
-        /// </summary>
         interface IInspect {
             /// <summary>
             /// 
             /// </summary>
             void Inspect();
         }
-        /// <summary>
-        /// 
-        /// </summary>
         public interface IOutline {
             /// <summary>
             /// 

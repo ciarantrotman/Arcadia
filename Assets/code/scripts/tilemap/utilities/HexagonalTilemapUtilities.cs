@@ -26,6 +26,7 @@ namespace code.scripts.tilemap.utilities {
             }
         }
         public static string readable_label(this CubicCoordinates a) => $"({a.q}, {a.r}, {a.s})";
+        public static string readable_label(this Vector3Int a) => $"({a.x}, {a.y}, {a.z})";
         /// <summary>
         /// Converts provided Cubic Coordinates into the Offset Coordinate system used by Unity
         /// </summary>
@@ -233,18 +234,6 @@ namespace code.scripts.tilemap.utilities {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="transform"></param>
-        /// <returns></returns>
-        public static Vector3Int get_offset_coordinates(this Transform transform) => GridManager.hexagonal_grid.WorldToCell(transform.position);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="transform"></param>
-        /// <returns></returns>
-        public static CubicCoordinates get_cubic_coordinates(this Transform transform) => transform.get_offset_coordinates().offset_to_cubic();
-        /// <summary>
-        /// 
-        /// </summary>
         /// <param name="coordinates"></param>
         /// <param name="comparison"></param>
         /// <returns></returns>
@@ -254,5 +243,17 @@ namespace code.scripts.tilemap.utilities {
             bool s = coordinates.s == comparison.s;
             return q && r && s;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <returns></returns>
+        public static Vector3Int offset_coordinates(this Transform transform) => GridManager.get_cell_coordinates(transform.position);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <returns></returns>
+        public static CubicCoordinates cubic_coordinates(this Transform transform) => offset_coordinates(transform).offset_to_cubic();
     }
 }
