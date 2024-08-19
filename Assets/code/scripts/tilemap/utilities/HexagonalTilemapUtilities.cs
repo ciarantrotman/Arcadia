@@ -25,7 +25,7 @@ namespace code.scripts.tilemap.utilities {
                 this.s = s;
             }
         }
-        public static string ReadableLabel(this CubicCoordinates a) => $"({a.q}, {a.r}, {a.s})";
+        public static string readable_label(this CubicCoordinates a) => $"({a.q}, {a.r}, {a.s})";
         /// <summary>
         /// Converts provided Cubic Coordinates into the Offset Coordinate system used by Unity
         /// </summary>

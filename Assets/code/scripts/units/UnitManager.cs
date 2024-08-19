@@ -18,17 +18,20 @@ namespace code.scripts.units {
         }
 
         private void Start() {
-            InputManager.instance.controls.action_map.move.performed += context => MoveSelectedUnitsToCursor();
+            InputManager.instance.controls.action_map.move.performed += context => MoveAllSelectedUnitsToCursor();
             InputManager.instance.controls.action_map.cancel.performed += context => DeselectAllSelectedUnits();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        private static void MoveSelectedUnitsToCursor() {
+        private static void MoveAllSelectedUnitsToCursor() {
             foreach (Unit unit_to_move in instance.selectedUnits) {
-                unit_to_move.OrderMovement(GridManager.hovered_cell);
-                // Debug.Log($"{unit_to_move.data.information.name} was ordered to move to {GridManager.hovered_cell.offset_to_cubic().ReadableLabel()}");
+                if (GridManager.cell_traversable(GridManager.hovered_cell.offset_to_cubic())) {
+                    unit_to_move.OrderMovement(GridManager.hovered_cell);
+                } else {
+                    Debug.LogWarning($"Cannot move {unit_to_move.data.information.name} to {GridManager.hovered_cell.offset_to_cubic().readable_label()} as this cell is not traversable");
+                }
             }
         }
 
